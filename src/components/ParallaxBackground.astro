@@ -13,24 +13,24 @@
 
 <style>
   .cityscape-background {
-    background-image: url('/sl-sky.webp');
+    background-image: url('/3290338.jpg');
     background-position: bottom center;
     background-size: cover;
     background-repeat: no-repeat;
     transform-origin: bottom;
-    animation: parallax 25s ease-in-out infinite;
+    animation: parallax 15s ease-in-out infinite;
     opacity: 0.15;
     filter: blur(1px);
   }
 
   @keyframes parallax {
-    0%, 100% {
-      transform: translateY(0) scale(1.05);
-    }
-    50% {
-      transform: translateY(-15px) scale(1);
-    }
+  0%, 100% {
+    transform: translateY(0) scale(1.1);
   }
+  50% {
+    transform: translateY(-30px) scale(1);
+  }
+}
 
   .bg-grid-pattern {
     background-image: linear-gradient(to right, rgba(0,0,0,0.1) 1px, transparent 1px),
@@ -40,13 +40,14 @@
 </style>
 
 <script>
-  // Add parallax effect based on scroll
   window.addEventListener('scroll', () => {
-    const cityscape = document.querySelector('.cityscape-background');
-    if (cityscape) {
+    const element = document.querySelector('.cityscape-background');
+    if (element instanceof HTMLElement) {
       const scrolled = window.pageYOffset;
-      const rate = scrolled * 0.15;
-      cityscape.style.transform = `translateY(${rate}px) scale(${1 + scrolled * 0.0001})`;
+      const rate = scrolled * 0.3;
+      const scale = 1 + scrolled * 0.0005;
+      element.style.transform = `translateY(${rate}px) scale(${scale})`;
     }
   });
 </script>
+
